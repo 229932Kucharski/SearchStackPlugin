@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="0 0 13 17" version="1.1">
+<defs>
+<filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+  <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+</filter>
+<mask id="mask0">
+  <g filter="url(#alpha)">
+<rect x="0" y="0" width="13" height="17" style="fill:rgb(0%,0%,0%);fill-opacity:0.654902;stroke:none;"/>
+  </g>
+</mask>
+<clipPath id="clip1">
+  <rect x="0" y="0" width="13" height="17"/>
+</clipPath>
+<g id="surface5" clip-path="url(#clip1)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(95.686275%,49.411765%,12.941176%);fill-opacity:1;" d="M 7.867188 16.671875 C 6.957031 16.671875 6.042969 16.671875 5.132812 16.671875 C 5.117188 15.652344 4.890625 14.671875 4.449219 13.730469 C 5.339844 10.5 6.933594 7.667969 9.238281 5.230469 C 8.3125 2.707031 6.945312 2.378906 5.132812 4.25 C 4.609375 4.832031 3.925781 5.269531 3.078125 5.558594 C 2.25 5.394531 1.792969 4.960938 1.710938 4.25 C 2.460938 3.664062 2.460938 3.117188 1.710938 2.617188 C 4.921875 -0.285156 8.230469 -0.390625 11.632812 2.289062 C 12.839844 6.367188 11.699219 9.636719 8.210938 12.097656 C 7.871094 13.605469 7.757812 15.132812 7.867188 16.671875 Z M 7.867188 16.671875 "/>
+</g>
+<mask id="mask1">
+  <g filter="url(#alpha)">
+<rect x="0" y="0" width="13" height="17" style="fill:rgb(0%,0%,0%);fill-opacity:0.643137;stroke:none;"/>
+  </g>
+</mask>
+<clipPath id="clip2">
+  <rect x="0" y="0" width="13" height="17"/>
+</clipPath>
+<g id="surface8" clip-path="url(#clip2)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(76.470588%,71.764706%,69.019608%);fill-opacity:1;" d="M 1.710938 4.25 C 1.792969 4.960938 2.25 5.394531 3.078125 5.558594 C 3.925781 5.269531 4.609375 4.832031 5.132812 4.25 C 5.769531 4.949219 6 5.820312 5.816406 6.867188 C 4.21875 6.867188 2.621094 6.867188 1.027344 6.867188 C 0.84375 5.820312 1.070312 4.949219 1.710938 4.25 Z M 1.710938 4.25 "/>
+</g>
+</defs>
+<g id="surface1">
+<use xlink:href="#surface5" mask="url(#mask0)"/>
+<use xlink:href="#surface8" mask="url(#mask1)"/>
+</g>
+</svg>
