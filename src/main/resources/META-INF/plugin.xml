@@ -47,18 +47,22 @@
       element and see how the menu text changes.) The alternate text and description attributes do not
       appear here because they are defined by action-id in the resource-bundle.
     -->
-    <action id="org.intellij.sdk.action.PopupDialogAction" class="org.intellij.sdk.action.PopupDialogAction"
-            text="Action Basics Plugin: Pop Dialog Action" description="SDK action example"
-            icon="SdkIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="first"/>
-      <override-text place="MainMenu" text="Pop Dialog Action"/>
-      <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>
-      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
-    </action>
+<!--    <action id="org.intellij.sdk.action.PopupDialogAction" class="org.intellij.sdk.action.PopupDialogAction"-->
+<!--            text="Action Basics Plugin: Pop Dialog Action" description="SDK action example"-->
+<!--            icon="SdkIcons.Sdk_default_icon">-->
+<!--      <add-to-group group-id="ToolsMenu" anchor="first"/>-->
+<!--      <override-text place="MainMenu" text="Pop Dialog Action"/>-->
+<!--      <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>-->
+<!--      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>-->
+<!--    </action>-->
 
     <action id="org.intellij.sdk.action.SearchAction" class="org.intellij.sdk.action.SearchAction"
-            text="Pluginek: Search Action" description="SDK action">
+            text="Pluginek: Search Action" description="SDK action"
+            icon="SdkIcons.Sdk_default_icon">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <override-text place="MainMenu" text="Search Stack"/>
       <keyboard-shortcut first-keystroke="control alt A" second-keystroke="P" keymap="$default"/>
+      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
     </action>
     <!--
       All of the following menu groups add the action PopupDialogAction to menus in different ways.
@@ -70,37 +74,37 @@
       enable/disable conditions. Instead it must rely on the conditions imposed by the parent menu where it is inserted.
       It declares one action in the group.
     -->
-    <group id="org.intellij.sdk.action.GroupedActions"
-           text="Static Grouped Actions" description="SDK statically grouped action example"
-           popup="true" icon="SdkIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.PopupDialogAction"/>
-      <action id="org.intellij.sdk.action.GroupPopDialogAction" class="org.intellij.sdk.action.PopupDialogAction"
-              text="A Group Action" description="SDK static grouped action example"
-              icon="SdkIcons.Sdk_default_icon">
-      </action>
-    </group>
+<!--    <group id="org.intellij.sdk.action.GroupedActions"-->
+<!--           text="Static Grouped Actions" description="SDK statically grouped action example"-->
+<!--           popup="true" icon="SdkIcons.Sdk_default_icon">-->
+<!--      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.PopupDialogAction"/>-->
+<!--      <action id="org.intellij.sdk.action.GroupPopDialogAction" class="org.intellij.sdk.action.PopupDialogAction"-->
+<!--              text="A Group Action" description="SDK static grouped action example"-->
+<!--              icon="SdkIcons.Sdk_default_icon">-->
+<!--      </action>-->
+<!--    </group>-->
     <!--
       CustomDefaultActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this
       plugin. This group is to be inserted atop the Editor Popup Menu. It declares one action in the group.
       The group and action implementations are internationalized, so their declarations do not use the text or
       description attributes. Instead, the information is defined in the BasicActionsBundle.
     -->
-    <group id="org.intellij.sdk.action.CustomDefaultActionGroup"
-           class="org.intellij.sdk.action.CustomDefaultActionGroup"
-           popup="true">
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="org.intellij.sdk.action.CustomGroupedAction" class="org.intellij.sdk.action.PopupDialogAction"
-              icon="SdkIcons.Sdk_default_icon"/>
-    </group>
-    <!--
-      DynamicActionGroup demonstrates declaring an action group without a static action declaration.
-      An action is added to the group programmatically in the DynamicActionGroup implementation.
-    -->
-    <group id="org.intellij.sdk.action.DynamicActionGroup" class="org.intellij.sdk.action.DynamicActionGroup"
-           popup="true" text="Dynamically Grouped Actions" description="SDK dynamically grouped action example"
-           icon="SdkIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.GroupedActions"/>
-    </group>
+<!--    <group id="org.intellij.sdk.action.CustomDefaultActionGroup"-->
+<!--           class="org.intellij.sdk.action.CustomDefaultActionGroup"-->
+<!--           popup="true">-->
+<!--      <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
+<!--      <action id="org.intellij.sdk.action.CustomGroupedAction" class="org.intellij.sdk.action.PopupDialogAction"-->
+<!--              icon="SdkIcons.Sdk_default_icon"/>-->
+<!--    </group>-->
+<!--    &lt;!&ndash;-->
+<!--      DynamicActionGroup demonstrates declaring an action group without a static action declaration.-->
+<!--      An action is added to the group programmatically in the DynamicActionGroup implementation.-->
+<!--    &ndash;&gt;-->
+<!--    <group id="org.intellij.sdk.action.DynamicActionGroup" class="org.intellij.sdk.action.DynamicActionGroup"-->
+<!--           popup="true" text="Dynamically Grouped Actions" description="SDK dynamically grouped action example"-->
+<!--           icon="SdkIcons.Sdk_default_icon">-->
+<!--      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.GroupedActions"/>-->
+<!--    </group>-->
   </actions>
 
 </idea-plugin>

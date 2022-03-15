@@ -5,30 +5,59 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.editor.Caret;
 import com.intellij.openapi.editor.CaretModel;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class SearchAction extends AnAction{
+import javax.swing.*;
+import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
+public class SearchAction extends AnAction {
+
+    public SearchAction() {
+        super();
+    }
+
+    public SearchAction(@Nullable String text, @Nullable String description, @Nullable Icon icon) {
+        super(text, description, icon);
+    }
+
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         PsiFile file = e.getData(CommonDataKeys.PSI_FILE);
-        Language lang = e.getData(CommonDataKeys.PSI_FILE).getLanguage();
-        String languageTag = "+[" + lang.getDisplayName().toLowerCase() + "]";
+        String selectedText = null;
+        String languageTag = "";
+        if (file != null) {
+            Language lang = e.getData(CommonDataKeys.PSI_FILE).getLanguage();
+            languageTag = "+[" + lang.getDisplayName().toLowerCase() + "]";
 
-        Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
-        CaretModel caretModel = editor.getCaretModel();
-        String selectedText = caretModel.getCurrentCaret().getSelectedText();
-
+            Caret editor = e.getRequiredData(CommonDataKeys.CARET);
+            CaretModel caretModel = editor.getCaretModel();
+            selectedText = caretModel.getCurrentCaret().getSelectedText();
+        }
+        if (selectedText == null) {
+            try {
+                selectedText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+            } catch (UnsupportedFlavorException unsupportedFlavorException) {
+                unsupportedFlavorException.printStackTrace();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
         String query = selectedText.replace(' ', '+') + languageTag;
         BrowserUtil.browse("https://stackoverflow.com/search?q=" + query);
     }
 
     @Override
     public void update(@NotNull AnActionEvent e) {
-        Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
+        Caret editor = e.getRequiredData(CommonDataKeys.CARET);
         CaretModel caretModel = editor.getCaretModel();
-        e.getPresentation().setEnabledAndVisible(caretModel.getCurrentCaret().hasSelection());
+        boolean available = Toolkit.getDefaultToolkit().getSystemClipboard().isDataFlavorAvailable(DataFlavor.stringFlavor);
+        e.getPresentation().setEnabledAndVisible(caretModel.getCurrentCaret().hasSelection()||available);
     }
 }
